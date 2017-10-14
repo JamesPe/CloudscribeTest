@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ESDM.Models.Sites>
+@{
+    ViewData["Title"] = "SiteRecord";
+}
+<h2>Site Record</h2>
+
+<table>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteType)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

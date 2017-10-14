@@ -237,8 +237,23 @@ namespace CloudscribeTest
                 routes.AddCloudscribeFileManagerRoutes();
 
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Sites",
+                    template: "Sites",
+                    defaults: new { controller = "Sites", action = "index" });
+
+                routes.MapRoute(
+                    name: "SiteRecord",
+                    template: "SiteRecord",
+                    defaults: new { controller = "Sites", action = "SiteRecord" });
+
+                //routes.MapRoute(
+                //    name: "SourceRecord",
+                //    template: "source/{id}",
+                //    defaults: new { controller = "Sources", action = "Source" });
+
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
 
                 if (useFolders)
                 {
