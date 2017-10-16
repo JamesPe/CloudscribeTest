@@ -8,27 +8,9 @@
 <a class="btn btn-xs btn-default"
    asp-action="TestPopup"
    asp-controller="TestPopup"
-   bs-modal-link="true">Hello world1</a>
+   bs-modal-link="true">Open Popup</a>
 
 
-
-@*
-       <div>
-        <label id="selectedRolesDisplay"></label>
-        <input type="text" id="mycsv" class="form-control" />
-        <a id="mymodal" class="btn btn-xs btn-default" title="Select Roles"
-           asp-action="Modal" asp-controller="RoleAdmin"
-           asp-route-siteId="@Model.Role.SiteId"
-           data-ajax="true"
-           data-ajax-begin="roleSelector.prepareModal('mycsv','selectedRolesDisplay')"
-           data-ajax-failure="roleSelector.clearModal()"
-           data-ajax-method="GET" data-ajax-mode="replace"
-           data-ajax-success="roleSelector.openModal()"
-           data-ajax-update="#roledialog"
-           >@sr["Select Roles"]</a>
-    </div>
-    <script src="~/jsdev/cloudscribe-role-selector.js"></script>
-*@
 @section Scripts {
     @{await Html.RenderPartialAsync("_UnobtrusiveValidationScriptsPartial"); }
     <script src="~/cr/js/jquery.unobtrusive-ajax.min.js"></script>

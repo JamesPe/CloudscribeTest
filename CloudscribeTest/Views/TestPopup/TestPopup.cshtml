@@ -1,26 +1,35 @@
-﻿@model cloudscribe.Core.Web.ViewModels.RoleAdmin.RoleListViewModel
-@using cloudscribe.Web.Navigation
-@using cloudscribe.Web.Pagination
-@addTagHelper "*, cloudscribe.Web.Pagination"
-@using cloudscribe.Core.Models
-@using cloudscribe.Core.Web
-@using Microsoft.Extensions.Options
-@using Microsoft.Extensions.Localization
+﻿
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2 class="modal-title" id="myModalLabel">My Popup</h2>
+        </div>
+        <div class="modal-body">
+            <div id="gridcontainer">
+               
 
+                <form role="form" method="get" class="form-inline" asp-controller="RoleAdmin" asp-action="Modal" asp-antiforgery="false"
+                      data-ajax="true"
+                      data-ajax-method="GET"
+                      data-ajax-mode="replace"
+                      data-ajax-success="roleSelector.syncChanges"
+                      data-ajax-update="#gridcontainer">
 
-<form role="form" method="get" class="form-inline" asp-controller="RoleAdmin" asp-action="Modal" asp-antiforgery="false"
-      data-ajax="true"
-      data-ajax-method="GET"
-      data-ajax-mode="replace"
-      data-ajax-success="roleSelector.syncChanges"
-      data-ajax-update="#gridcontainer">
-
-    <input name="ajaxGrid" type="hidden" value="true" />
-    <div class="input-group">
-        <input type="search" name="searchInput" value="" class="form-control" />
-        <span class="input-group-btn">
-            <button type="submit" name='submit' class="btn btn-default">Search</button>
-        </span>
+                    <input name="ajaxGrid" type="hidden" value="true" />
+                    <div class="input-group">
+                        <input type="search" name="searchInput" value="" class="form-control" />
+                        <span class="input-group-btn">
+                            <button type="submit" name='submit' class="btn btn-default">Search</button>
+                        </span>
+                    </div>
+                </form>
+                Hello world
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="selectedcsv" type="hidden" value="" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
     </div>
-</form>
-
+</div>

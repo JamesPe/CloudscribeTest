@@ -10,9 +10,8 @@ namespace CloudscribeTest.Controllers
 
 
     {
-        public async Task<IActionResult> TestPopup() { 
-        //public IActionResult TestPopup()        {
-            
+
+        public IActionResult TestPopup()        {
             return PartialView();
         }
     }
