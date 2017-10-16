@@ -8,13 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using ESDM.Models;
 using System.Threading;
 using cloudscribe.Pagination.Models;
+using cloudscribe.Core.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ESDM.Controllers
 {
     public class SitesController : Controller
     {
-        private const int DefaultPageSize = 10;
+        private const int DefaultPageSize = 20;
         private List<Site> allSites = new List<Site>();
+
+
 
         private readonly CMSiDataContext _context;
 
@@ -28,13 +32,13 @@ namespace ESDM.Controllers
             return View( _context.Sites.Where(x => x.SiteName == "Reed Hill SSSI").ToList())  ;
         }
 
-
         public async Task<IActionResult> Index()
         {
             return View(await _context.Sites.ToListAsync());
         }
 
 
+        [Authorize(Policy = "CanListSites")]
         public IActionResult SiteList(
             int? pageNumber,
             int? pageSize,
@@ -59,8 +63,6 @@ namespace ESDM.Controllers
             model.Query = query; //TODO: sanitize
 
             return View(model);
-
-
         }
 
         

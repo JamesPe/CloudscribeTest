@@ -78,7 +78,6 @@ namespace CloudscribeTest
             //services.AddSession();
 
             ConfigureAuthPolicy(services);
-
             services.AddOptions();
 
             var connectionStringCMSI = Configuration.GetConnectionString("CMSiEntityFrameworkConnection");
@@ -365,6 +364,13 @@ namespace CloudscribeTest
                     {
                         authBuilder.RequireRole("Administrators", "Content Administrators");
                     });
+
+
+                options.AddPolicy(
+                        "CanListSites",
+                        authBuilder => authBuilder.RequireAuthenticatedUser());
+
+
 
 
                 // add other policies here 
