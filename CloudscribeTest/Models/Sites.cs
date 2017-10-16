@@ -17,6 +17,14 @@ namespace ESDM.Models
 
     public partial class SitesListViewModel
     {
+        //public string Q { get; set; }
+        //public int SortMode { get; set; } = 0;
+
+        public PagedResult<SitesListViewModel> SitesList { get; set; }
+
+        public PaginationSettings Paging { get; set; }
+        public string Query { get; set; } = string.Empty;
+        public List<Site> Sites { get; set; } = null;
 
         public SitesListViewModel()
         {
@@ -25,19 +33,10 @@ namespace ESDM.Models
         }
 
 
-        public string SiteCode { get; set; }
-        public string SiteName { get; set; }
-        public string SiteType { get; set; }
+        //public string SiteCode { get; set; }
+        //public string SiteName { get; set; }
+        //public string SiteType { get; set; }
 
-        public string Q { get; set; }
-
-        public int SortMode { get; set; } = 0;
-
-        public PagedResult<SitesListViewModel> SitesList { get; set; }
-
-        public PaginationSettings Paging { get; set; }
-        public string Query { get; set; } = string.Empty;
-        public List<Site> Sites { get; set; } = null;
     }
 }
 
