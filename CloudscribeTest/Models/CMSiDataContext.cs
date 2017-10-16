@@ -7,7 +7,9 @@ namespace ESDM.Models
 {
     public partial class CMSiDataContext : DbContext
     {
-        public virtual DbSet<Sites> Sites { get; set; }
+        public virtual DbSet<Site> Sites { get; set; }
+
+        //public virtual DbSet<SitesListViewModel> SitesListViewModel { get; set; }
 
         public CMSiDataContext(DbContextOptions<CMSiDataContext> options) : base(options)
         { }
@@ -23,11 +25,13 @@ namespace ESDM.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Site>(entity => { entity.HasKey(e => e.SiteCode); });
+            //modelBuilder.Entity<SitesListViewModel>(entity => { entity.HasKey(e => e.SiteCode); });
 
-            modelBuilder.Entity<Sites>(entity => { entity.HasKey(e => e.SiteCode); });
             {
-                modelBuilder.Entity<Sites>().ToTable("vwSiteSearch", "CES");
+                modelBuilder.Entity<Site>().ToTable("vwSiteSearch", "CES");
                 base.OnModelCreating(modelBuilder);
+                modelBuilder.Entity<Site>(entity => { entity.HasKey(e => e.SiteCode); });
             }
         }
     }

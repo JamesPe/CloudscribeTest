@@ -242,6 +242,11 @@ namespace CloudscribeTest
                     defaults: new { controller = "Sites", action = "index" });
 
                 routes.MapRoute(
+                    name: "SiteList",
+                    template: "SiteList",
+                    defaults: new { controller = "Sites", action = "sitelist" });
+
+                routes.MapRoute(
                     name: "SiteRecord",
                     template: "SiteRecord",
                     defaults: new { controller = "Sites", action = "SiteRecord" });
