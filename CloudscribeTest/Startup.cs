@@ -250,6 +250,18 @@ namespace CloudscribeTest
                     template: "SiteRecord",
                     defaults: new { controller = "Sites", action = "SiteRecord" });
 
+
+                //routes.MapRoute(
+                //    name: "TestPopup",
+                //    template: "TestPopup",
+                //    defaults: new { controller = "TestPopup", action = "TestPopup" });
+
+                routes.MapRoute(
+                    name: "Test",
+                    template: "Test",
+                    defaults: new { controller = "Test", action = "index" });
+
+
                 //routes.MapRoute(
                 //    name: "SourceRecord",
                 //    template: "source/{id}",
