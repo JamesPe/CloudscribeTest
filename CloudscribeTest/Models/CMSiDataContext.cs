@@ -29,7 +29,7 @@ namespace ESDM.Models
             //modelBuilder.Entity<SitesListViewModel>(entity => { entity.HasKey(e => e.SiteCode); });
 
             {
-                modelBuilder.Entity<Site>().ToTable("vwSiteSearch", "CES");
+                modelBuilder.Entity<Site>().ToTable("vwSiteSearchTest", "CES");
                 base.OnModelCreating(modelBuilder);
                 modelBuilder.Entity<Site>(entity => { entity.HasKey(e => e.SiteCode); });
             }
