@@ -26,6 +26,7 @@
             <th>SiteCode</th>
             <th>SiteName</th>
             <th>SiteType</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@
                 <td>@s.SiteCode</td>
                 <td>@s.SiteName</td>
                 <td>@s.SiteType</td>
+                <td><a asp-action="Edit" asp-route-id="@s.SiteCode">Edit</a> </td>
             </tr>}
     </tbody>
 </table>

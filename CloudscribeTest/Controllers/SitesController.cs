@@ -65,6 +65,61 @@ namespace ESDM.Controllers
             return View(model);
         }
 
-        
+        // GET: vwSiteSearches/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Site = await _context.Sites.SingleOrDefaultAsync(m => m.SiteCode == id);
+            if (Site == null)
+            {
+                return NotFound();
+            }
+            return View(Site);
+        }
+
+        // POST: vwSiteSearches/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("SiteCode,SiteName,SiteType")] Site Site)
+        {
+            if (id.ToUpper() != Site.SiteCode.ToUpper())
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(Site);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!SiteExists(Site.SiteCode))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(SiteList));
+            }
+            return View(Site);
+        }
+
+        private bool SiteExists(string id)
+        {
+            return _context.Sites.Any(e => e.SiteCode == id);
+        }
+
     }
 }
