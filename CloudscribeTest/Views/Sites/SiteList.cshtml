@@ -1,5 +1,6 @@
 ﻿@using cloudscribe.Web.Pagination
 @using ESDM.Models;
+@addTagHelper "*, cloudscribe.Web.Common"
 @model SitesListViewModel
 @{
     ViewBag.Title = "Browse all products with ViewModel";
@@ -27,6 +28,7 @@
             <th>SiteName</th>
             <th>SiteType</th>
             <th>Action</th>
+            <th>Popup</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +39,13 @@
                 <td>@s.SiteName</td>
                 <td>@s.SiteType</td>
                 <td><a asp-action="Edit" asp-route-id="@s.SiteCode">Edit</a> </td>
+                <td>
+                    <a class="btn btn-xs btn-default"
+                       asp-action="EditPopup"
+                       asp-controller="Sites"
+                       asp-route-id="@s.SiteCode"
+                       bs-modal-link="true">EditPopup</a>
+                </td>
             </tr>}
     </tbody>
 </table>
@@ -50,3 +59,9 @@
               asp-route-query="@Model.Query"
               asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_UnobtrusiveValidationScriptsPartial"); }
+    <script src="~/cr/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/cr/js/cloudscribe-modaldialog-bootstrap.min.js"></script>
+}

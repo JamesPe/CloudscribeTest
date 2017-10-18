@@ -65,6 +65,25 @@ namespace ESDM.Controllers
             return View(model);
         }
 
+ 
+        // GET: vwSiteSearches/Edit/5
+        public async Task<IActionResult> EditPopup(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Site = await _context.Sites.SingleOrDefaultAsync(m => m.SiteCode == id);
+            if (Site == null)
+            {
+                return NotFound();
+            }
+            return PartialView(Site);
+
+        }
+
+      
         // GET: vwSiteSearches/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -79,6 +98,7 @@ namespace ESDM.Controllers
                 return NotFound();
             }
             return View(Site);
+        
         }
 
         // POST: vwSiteSearches/Edit/5
