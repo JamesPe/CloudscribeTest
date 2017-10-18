@@ -66,6 +66,7 @@ namespace ESDM.Controllers
         }
 
  
+        [HttpGet]
         // GET: vwSiteSearches/Edit/5
         public async Task<IActionResult> EditPopup(string id)
         {
@@ -83,7 +84,38 @@ namespace ESDM.Controllers
 
         }
 
-      
+        public async Task<IActionResult> EditPopupSave([Bind("SiteCode,SiteName,SiteType")] Site Site)
+        {
+            //if (id.ToUpper() != Site.SiteCode.ToUpper())
+            //{
+            //    return NotFound();
+            //}
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(Site);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!SiteExists(Site.SiteCode))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return PartialView("_CloseModal");
+            }
+            return View();
+        }
+
+
+
         // GET: vwSiteSearches/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

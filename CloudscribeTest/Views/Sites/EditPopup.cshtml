@@ -18,7 +18,7 @@
             <div id="gridcontainer">
 
 
-                <form role="form" method="get" class="form-inline" asp-controller="EditPopup" asp-action="EditPopup" asp-antiforgery="false"
+                <form role="form" method="get" class="form-inline" asp-controller="Sites" asp-action="EditPopupSave" asp-antiforgery="false"
                       data-ajax="true"
                       data-ajax-method="GET"
                       data-ajax-mode="replace"
@@ -50,6 +50,3 @@
     </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
